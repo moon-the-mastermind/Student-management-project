@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mb-4">{% if form.instance.pk %}Edit Student{% else %}Add Student{% endif %}</h1>
+<form method="post" class="needs-validation" novalidate>
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="id_name" class="form-label">Name</label>
+        {{ form.name }}
+        <div class="invalid-feedback">
+            Please provide a valid name.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="id_email" class="form-label">Email</label>
+        {{ form.email }}
+        <div class="invalid-feedback">
+            Please provide a valid email.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="id_phone" class="form-label">Phone</label>
+        {{ form.phone }}
+        <div class="invalid-feedback">
+            Please provide a valid phone number.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="id_course" class="form-label">Course</label>
+        {{ form.course }}
+        <div class="invalid-feedback">
+            Please provide a valid course.
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="{% url 'student_list' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
